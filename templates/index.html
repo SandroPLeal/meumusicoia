@@ -1,56 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Meu Músico AI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
-    <style>
-        body {
-            margin: 40px;
-            background-color: #f3f3f3;
-        }
-        textarea {
-            resize: vertical;
-        }
-        .container {
-            max-width: 700px;
-            margin: auto;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Meu Músico IA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f0f4ff;
+      color: #333;
+    }
+
+    .hero {
+      background: linear-gradient(to right, #667eea, #764ba2);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2em;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .feature {
+      text-align: center;
+    }
+
+    .feature i {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+      color: #5c6ac4;
+    }
+
+    footer {
+      background: #2d3748;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 60px;
+    }
+
+    .button-primary {
+      background: #6b46c1;
+      border: none;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<div class="container">
-    <h2>🎵 Meu Músico AI</h2>
-    <p>Crie música a partir da sua voz ou de uma partitura escrita</p>
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div style="color: red;">
-                {% for message in messages %}
-                    <p>{{ message }}</p>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
+  <div class="hero">
+    <h1>🎵 Meu Músico IA Está no Ar!</h1>
+    <p>Transforme sua voz ou melodia em uma obra musical com tecnologia inteligente.</p>
+    <a href="/processar" class="button button-primary">🎶 Criar Música Agora</a>
+  </div>
 
-    <form action="/processar" method="post" enctype="multipart/form-data">
-        <label for="audio">📥 Envie sua melodia (voz, assobio ou instrumento)</label>
-        <input type="file" name="audio" accept=".wav,.mp3,.m4a">
+  <div class="container">
+    <h3 style="text-align:center;">Funcionalidades que Encantam</h3>
 
-        <label for="partitura">✍️ Ou escreva sua melodia (ex: C4 D4 E4 F4)</label>
-        <textarea name="partitura" rows="5" placeholder="C4 D4 E4 G4"></textarea>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-microphone"></i>
+        <h5>Afinação Inteligente</h5>
+        <p>Corrige automaticamente sua voz ou instrumento com qualidade profissional.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-music"></i>
+        <h5>Melodia Personalizada</h5>
+        <p>Escolha o instrumento e deixe a IA gerar uma trilha única pra você.</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-download"></i>
+        <h5>Áudio para Download</h5>
+        <p>Baixe o resultado final no formato WAV para guardar ou usar em projetos.</p>
+      </div>
+    </div>
+  </div>
 
-        <label for="instrumento">🎹 Escolha o instrumento</label>
-        <select name="instrumento">
-            <option value="piano">Piano</option>
-            <option value="violin">Violino</option>
-            <option value="guitar">Guitarra</option>
-            <option value="flute">Flauta</option>
-        </select>
+  <footer>
+    © 2025 Meu Músico IA — Criado com ❤️ por Sandro Leal
+  </footer>
 
-        <br><br>
-        <button type="submit" class="button-primary">🎶 Gerar Música</button>
-    </form>
-</div>
 </body>
 </html>
