@@ -3,3 +3,4 @@ music21==9.7.0
 numpy==1.26.4
 pydub
 librosa
+gunicorn
