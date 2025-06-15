@@ -7,7 +7,7 @@ UPLOAD_FOLDER = 'static/audio'
 ALLOWED_AUDIO_EXTENSIONS = {'wav', 'mp3', 'm4a'}
 ALLOWED_TEXT_EXTENSIONS = {'txt', 'abc', 'ly'}
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='templates')
 app.secret_key = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
@@ -17,7 +17,7 @@ def allowed_file(filename, allowed_set):
 
 @app.route('/')
 def index():
-    return render_template('/debug/lista')
+    return render_template('index.html')
 
 @app.route('/debug/lista')
 def lista_arquivos():
