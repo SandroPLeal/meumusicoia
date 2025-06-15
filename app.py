@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, send_from_directory, redirect
 import os
 from werkzeug.utils import secure_filename
 from utils import converter, sintetizador, afinador, extras
+import time
 
 UPLOAD_FOLDER = 'static/audio'
 ALLOWED_AUDIO_EXTENSIONS = {'wav', 'mp3', 'm4a'}
