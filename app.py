@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, send_from_directory, redirect, url_for, flash
 import os
+import time
+import uuid  # ✅ Este estava faltando
 from werkzeug.utils import secure_filename
 from utils import converter, sintetizador, afinador, extras
-import time
+import traceback
+
 
 UPLOAD_FOLDER = 'static/audio'
 ALLOWED_AUDIO_EXTENSIONS = {'wav', 'mp3', 'm4a'}
