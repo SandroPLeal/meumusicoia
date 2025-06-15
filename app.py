@@ -17,7 +17,18 @@ def allowed_file(filename, allowed_set):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('/debug/lista')
+
+@app.route('/debug/lista')
+def lista_arquivos():
+    base = os.getcwd()
+    saida = []
+    for root, dirs, files in os.walk(base):
+        for name in files:
+            caminho = os.path.relpath(os.path.join(root, name), base)
+            saida.append(caminho)
+    return "<pre>" + "\n".join(saida) + "</pre>"
+
 
 @app.route('/processar', methods=['GET', 'POST'])
 def processar():
