@@ -14,6 +14,8 @@ ALLOWED_TEXT_EXTENSIONS = {'txt', 'abc', 'ly'}
 app = Flask(__name__, template_folder='templates')
 app.secret_key = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
 
 # Verifica extensões permitidas
 def allowed_file(filename, allowed_set):
