@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Meu Músico AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style>
+        body {
+            margin: 40px;
+            background-color: #f3f3f3;
+        }
+        textarea {
+            resize: vertical;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>🎵 Meu Músico AI</h2>
+    <p>Crie música a partir da sua voz ou de uma partitura escrita</p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div style="color: red;">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form action="/processar" method="post" enctype="multipart/form-data">
+        <label for="audio">📥 Envie sua melodia (voz, assobio ou instrumento)</label>
+        <input type="file" name="audio" accept=".wav,.mp3,.m4a">
+
+        <label for="partitura">✍️ Ou escreva sua melodia (ex: C4 D4 E4 F4)</label>
+        <textarea name="partitura" rows="5" placeholder="C4 D4 E4 G4"></textarea>
+
+        <label for="instrumento">🎹 Escolha o instrumento</label>
+        <select name="instrumento">
+            <option value="piano">Piano</option>
+            <option value="violin">Violino</option>
+            <option value="guitar">Guitarra</option>
+            <option value="flute">Flauta</option>
+        </select>
+
+        <br><br>
+        <button type="submit" class="button-primary">🎶 Gerar Música</button>
+    </form>
+</div>
+</body>
+</html>

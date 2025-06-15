@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado - Meu Músico AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+    <style>
+        body {
+            margin: 40px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+        audio {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>🎧 Música Gerada com Sucesso!</h2>
+
+    {% if origem == 'voz' %}
+        <p>🎙️ Esta música foi gerada a partir da sua voz ou áudio enviado.</p>
+    {% elif origem == 'partitura' %}
+        <p>📝 Esta música foi gerada a partir da partitura escrita.</p>
+    {% endif %}
+
+    <p>Ouça sua criação abaixo:</p>
+
+    <audio controls>
+        <source src="{{ url_for('static', filename='audio/' + filename) }}" type="audio/wav">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <br><br>
+    <a href="{{ url_for('baixar', filename=filename) }}" class="button">⬇️ Baixar Arquivo</a>
+    <br><br>
+    <a href="{{ url_for('index') }}" class="button button-outline">⏪ Voltar</a>
+</div>
+</body>
+</html>
